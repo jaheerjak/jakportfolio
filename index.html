@@ -1,177 +1,292 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="color-scheme" content="dark light" />
-  <title>Jaheer Hussein | Game Developer Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jaheer Hussein — Game Developer</title>
+
+  <!-- Tailwind CDN (no build required) -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Simple meta / fav icon -->
+  <meta name="description" content="Jaheer Hussein — Game Developer. Unity, WebGL, AR, Mobile games." />
+  <link rel="icon" href="data:,">
+  <style>
+    /* small custom styles for card shadows and smooth scrolling */
+    html { scroll-behavior: smooth; }
+    .glass { background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(6px); }
+  </style>
 </head>
+<body class="bg-gradient-to-b from-slate-900 via-slate-800 to-black text-slate-100 antialiased">
 
-<body class="bg-slate-900 text-slate-100 font-sans scroll-smooth">
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 backdrop-blur-md glass border-b border-slate-700/30">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-violet-500 flex items-center justify-center font-bold text-black">JM</div>
+        <div class="hidden sm:block">
+          <div class="font-semibold">Jaheer Hussein</div>
+          <div class="text-xs text-slate-300">Game Developer — Unity & Web</div>
+        </div>
+      </a>
 
-  <!-- Header -->
-  <header class="fixed top-0 left-0 w-full z-50 bg-slate-900/80 backdrop-blur-lg border-b border-slate-700">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-      <a href="#home" class="text-xl font-bold tracking-wide">Jaheer<span class="text-blue-400">Hussein</span></a>
-      <nav class="hidden md:flex gap-6 text-sm">
-        <a href="#home" class="hover:text-blue-400">Home</a>
-        <a href="#about" class="hover:text-blue-400">About</a>
-        <a href="#projects" class="hover:text-blue-400">Projects</a>
-        <a href="#contact" class="hover:text-blue-400">Contact</a>
-        <a href="resume.pdf" download class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md">Resume</a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="#home" class="hover:text-white">Home</a>
+        <a href="#about" class="hover:text-white">About</a>
+        <a href="#projects" class="hover:text-white">Projects</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+        <a href="resume.pdf" download class="inline-flex items-center gap-2 bg-slate-100 text-black px-3 py-2 rounded-md hover:shadow-lg">
+          <!-- download icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
+          Resume
+        </a>
       </nav>
-      <button id="menuBtn" class="md:hidden flex items-center">
-        <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
-        </svg>
-      </button>
+
+      <!-- mobile toggle -->
+      <div class="md:hidden">
+        <button id="menuBtn" aria-label="menu" class="p-2 rounded-md bg-slate-800/40 border border-slate-700">
+          <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
+          </svg>
+        </button>
+      </div>
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden flex flex-col bg-slate-900 border-t border-slate-700 px-4 py-3 space-y-2">
-      <a href="#home" class="hover:text-blue-400">Home</a>
-      <a href="#about" class="hover:text-blue-400">About</a>
-      <a href="#projects" class="hover:text-blue-400">Projects</a>
-      <a href="#contact" class="hover:text-blue-400">Contact</a>
-      <a href="resume.pdf" download class="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-md">
-        Resume
-      </a>
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden px-6 pb-4">
+      <div class="flex flex-col gap-3">
+        <a href="#home" class="py-2">Home</a>
+        <a href="#about" class="py-2">About</a>
+        <a href="#projects" class="py-2">Projects</a>
+        <a href="#contact" class="py-2">Contact</a>
+        <a href="resume.pdf" download class="py-2 inline-flex items-center gap-2 bg-slate-100 text-black px-3 py-2 rounded-md">Download Resume</a>
+      </div>
     </div>
   </header>
 
-  <!-- Home -->
-  <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-4 pt-24">
-    <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="text-blue-400">Jaheer Hussein</span></h1>
-    <p class="text-slate-400 text-lg md:text-xl max-w-2xl">
-      Game Developer with over 10 years of experience in Unity, Firebase, multiplayer systems, and cross-platform integration.
-    </p>
-    <div class="mt-6">
-      <a href="#projects" class="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-md">View Projects</a>
-    </div>
-  </section>
+  <!-- MAIN -->
+  <main class="max-w-6xl mx-auto px-6 py-12">
+    <!-- HERO -->
+    <section id="home" class="grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Hi — I'm <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-violet-400">Jaheer</span>, a Game Developer.</h1>
+        <p class="mt-4 text-slate-300 max-w-lg">I build polished games and interactive experiences with Unity, WebGL and AR. I care about tight gameplay, performance and beautiful UI/UX.</p>
 
-  <!-- About -->
-  <section id="about" class="max-w-5xl mx-auto px-4 py-20">
-    <h2 class="text-3xl font-semibold mb-6 text-blue-400">About Me</h2>
-    <p class="text-slate-300 leading-relaxed">
-      I’m a Unity Game Developer from Tamil Nadu, India, with extensive experience in both 2D and 3D projects. I’ve built
-      single-player and multiplayer games, integrated APIs, handled in-app purchases, and implemented AR and WebGL experiences.
-      Passionate about crafting engaging gameplay systems and optimized game mechanics.
-    </p>
-  </section>
+        <div class="mt-6 flex gap-3">
+          <a href="#projects" class="px-5 py-2 rounded-md bg-violet-600 hover:brightness-110">View Projects</a>
+          <a href="resume.pdf" download class="px-5 py-2 rounded-md border border-slate-700">Download Resume</a>
+        </div>
 
-  <!-- Projects -->
-  <section id="projects" class="max-w-6xl mx-auto px-4 py-20">
-    <h2 class="text-3xl font-semibold mb-8 text-blue-400">Projects</h2>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <!-- Cricket Gangsta -->
-      <article class="rounded-xl overflow-hidden border border-slate-700 bg-slate-800/30">
-        <div class="aspect-video bg-center bg-cover" style="background-image:url('cg.png');"></div>
-        <div class="p-4">
-          <h3 class="font-semibold text-lg">Cricket Gangsta</h3>
-          <p class="text-slate-400 text-sm mt-2">
-            A street-style multiplayer cricket game with real-time PvP action. I implemented Firebase API integration, costume customization,
-            player card selection, reward setup, in-app purchases, AdMob, and a complete tutorial system.
-          </p>
-          <div class="mt-3 flex gap-3">
-            <a href="https://play.google.com/store/apps/details?id=com.cricketgangsta.app" target="_blank">
-              <img src="playstore.png" alt="Play Store" class="h-8">
-            </a>
-            <a href="https://apps.apple.com/app/id123456789" target="_blank">
-              <img src="appstore.png" alt="App Store" class="h-8">
-            </a>
+        <div class="mt-8 grid grid-cols-3 gap-4 max-w-sm">
+          <div class="text-center">
+            <div class="text-2xl font-bold">5+</div>
+            <div class="text-xs text-slate-400">Years</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold">10+</div>
+            <div class="text-xs text-slate-400">Games</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold">Mobile · Web</div>
+            <div class="text-xs text-slate-400">Platforms</div>
           </div>
         </div>
-      </article>
+      </div>
 
-      <!-- Meta Cricket League -->
-      <article class="rounded-xl overflow-hidden border border-slate-700 bg-slate-800/30">
-        <div class="aspect-video bg-center bg-cover" style="background-image:url('mcl.png');"></div>
-        <div class="p-4">
-          <h3 class="font-semibold text-lg">Meta Cricket League</h3>
-          <p class="text-slate-400 text-sm mt-2">
-            An NFT-based multiplayer cricket game blending sports and blockchain. I worked on player avatar selection, daily rewards, NFT card setup,
-            leaderboard, UI transitions, and realistic ball particle effects for visual impact.
-          </p>
-          <div class="mt-3 flex gap-3">
-            <a href="https://play.google.com/store/apps/details?id=com.metacricketleague.app" target="_blank">
-              <img src="playstore.png" alt="Play Store" class="h-8">
-            </a>
-            <a href="https://apps.apple.com/app/id987654321" target="_blank">
-              <img src="appstore.png" alt="App Store" class="h-8">
-            </a>
+      <div class="relative">
+        <div class="rounded-2xl overflow-hidden border border-slate-700 bg-slate-800/30 p-4">
+          <!-- replace background image with your screenshot -->
+          <div class="w-full h-64 md:h-80 rounded-xl bg-center bg-cover" style="background-image:url('https://placehold.co/800x600?text=Game+Screenshot');"></div>
+        </div>
+        <div class="mt-3 text-sm text-slate-400">Featured: Neon Runner — Unity (C#)</div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="mt-12 grid md:grid-cols-3 gap-8 items-start">
+      <div class="md:col-span-2">
+        <h2 class="text-2xl font-semibold">About me</h2>
+        <p class="mt-4 text-slate-300">Former QA turned Unity developer. I design gameplay systems, optimize for mobile & WebGL, and ship complete projects — from prototypes to releases.</p>
+
+        <div class="mt-6 grid sm:grid-cols-2 gap-4">
+          <div class="p-4 rounded-xl glass border border-slate-700">
+            <h3 class="font-semibold">Gameplay</h3>
+            <p class="text-sm text-slate-300 mt-2">State machines, responsive controls, balanced mechanics.</p>
+          </div>
+          <div class="p-4 rounded-xl glass border border-slate-700">
+            <h3 class="font-semibold">Tools</h3>
+            <p class="text-sm text-slate-300 mt-2">Unity, C#, Git, Firebase, WebGL, AnimateCC,Figma.</p>
+          </div>
+          <div class="p-4 rounded-xl glass border border-slate-700">
+            <h3 class="font-semibold">Optimization</h3>
+            <p class="text-sm text-slate-300 mt-2">Profiling, batching, memory & FPS tuning for mobile.</p>
+          </div>
+          <div class="p-4 rounded-xl glass border border-slate-700">
+            <h3 class="font-semibold">Teamwork</h3>
+            <p class="text-sm text-slate-300 mt-2">Small-team friendly, full-cycle development experience.</p>
           </div>
         </div>
-      </article>
+      </div>
 
-      <!-- ITC Classmate -->
-      <article class="rounded-xl overflow-hidden border border-slate-700 bg-slate-800/30">
-        <div class="aspect-video bg-center bg-cover" style="background-image:url('itc.png');"></div>
-        <div class="p-4">
-          <h3 class="font-semibold text-lg">ITC Classmate</h3>
-          <p class="text-slate-400 text-sm mt-2">
-            A kids’ learning app with 40+ fun educational games. I handled multiple game integrations, in-app purchases, user stats, personalized
-            recommendations, leaderboard system, API basics, and user registration flow.
-          </p>
-          <div class="mt-3 flex gap-3">
-            <a href="https://play.google.com/store/apps/details?id=com.itc.classmate" target="_blank">
-              <img src="playstore.png" alt="Play Store" class="h-8">
-            </a>
-            <a href="https://apps.apple.com/app/id1122334455" target="_blank">
-              <img src="appstore.png" alt="App Store" class="h-8">
-            </a>
-          </div>
+      <aside class="rounded-2xl p-6 border border-slate-700 glass">
+        <h3 class="font-semibold">Tech Stack</h3>
+        <ul class="mt-3 space-y-2 text-slate-300">
+          <li>Unity & C#</li>
+          <li>WebGL</li>
+          <li>Firebase & REST APIs</li>
+          <li>AR/VR</li>
+          <li>Photon Multiplayer</li>
+          <li>Git, CI/CD</li>
+        </ul>
+
+        <div class="mt-6">
+          <a href="resume.pdf" download class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-slate-100 text-black">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
+            Download Resume
+          </a>
         </div>
-      </article>
+      </aside>
+    </section>
 
-    </div>
-  </section>
+    <!-- PROJECTS -->
+    <section id="projects" class="mt-12">
+      <h2 class="text-2xl font-semibold">Selected Projects</h2>
+      <p class="text-slate-400 mt-2">A hand-picked selection of games and interactive experiences.</p>
 
-  <!-- Contact -->
-  <section id="contact" class="max-w-5xl mx-auto px-4 py-20">
-    <h2 class="text-3xl font-semibold mb-6 text-blue-400">Contact</h2>
-    <form onsubmit="contactSubmit(event)" class="grid gap-4 max-w-md">
-      <input id="name" type="text" placeholder="Your Name" class="px-4 py-2 rounded bg-slate-800 border border-slate-700" required>
-      <input id="email" type="email" placeholder="Your Email" class="px-4 py-2 rounded bg-slate-800 border border-slate-700" required>
-      <textarea id="message" rows="4" placeholder="Message" class="px-4 py-2 rounded bg-slate-800 border border-slate-700" required></textarea>
-      <button type="submit" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-md text-white">Send Message</button>
-    </form>
-  </section>
+      <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Project card: duplicate / replace entries -->
+        <article class="rounded-xl overflow-hidden border border-slate-700 bg-slate-800/30">
+          <div class="aspect-video bg-center bg-cover" style="background-image:url('itc.jpg');"></div>
+          <div class="p-4">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="font-semibold">ITC Classmate</h3>
+                <p class="text-slate-400 text-sm mt-1">A kids’ educational app featuring 40+ fun and interactive learning games. I handled the integration of multiple mini-games, in-app purchases, and user statistics tracking. My work also covered user game recommendations, leaderboard logic, API integration, and user registration flow for a complete experience.</p>
+              </div>              
+            </div>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="text-xs px-2 py-1 rounded bg-slate-700/40">Unity</span>
+              <span class="text-xs px-2 py-1 rounded bg-slate-700/40">C#</span>
+              <span class="text-xs px-2 py-1 rounded bg-slate-700/40">Mobile</span>
+            </div>
+            <!-- Store links -->
+            <div class="mt-3 flex gap-2">
+              <a href="https://play.google.com/store/apps/details?id=com.XYZ.ITCClassMate" target="_blank" class="p-2 rounded-md hover:bg-slate-700/30" title="Play Store">
+                <img src="playstore.png" alt="Play Store" class="h-6">
+              </a>
+              <a href="https://apps.apple.com/in/app/myclassmate/id1635547859" target="_blank" class="p-2 rounded-md hover:bg-slate-700/30" title="App Store">
+                <img src="appstore.png" alt="App Store" class="h-6">
+              </a>
+            </div>
+          </div>
+        </article>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-700 py-6 text-center text-sm text-slate-500">
-    © <span id="year"></span> Jaheer Hussein. All rights reserved.
-  </footer>
+        <!-- second sample -->
+        <article class="rounded-xl overflow-hidden border border-slate-700 bg-slate-800/30">
+          <div class="aspect-video bg-center bg-cover" style="background-image:url('mcl.png');"></div>
+          <div class="p-4">
+            <h3 class="font-semibold">Meta Cricket League</h3>
+            <p class="text-slate-400 text-sm mt-1">An NFT-based multiplayer cricket game blending sports and blockchain. My role included player avatar selection, daily rewards, and NFT card management. I also developed the leaderboard system, added UI effects, and implemented realistic ball particle effects to enhance gameplay visuals.</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="text-xs px-2 py-1 rounded bg-slate-700/40">Unity</span>
+              <span class="text-xs px-2 py-1 rounded bg-slate-700/40">C#</span>
+              <span class="text-xs px-2 py-1 rounded bg-slate-700/40">Mobile</span>
+            </div>
+            <!-- Store links -->
+            <div class="mt-3 flex gap-2">
+              <a href="https://play.google.com/store/apps/details?id=com.metacricketleague.app" target="_blank" class="p-2 rounded-md hover:bg-slate-700/30" title="Play Store">
+                <img src="playstore.png" alt="Play Store" class="h-6">
+              </a>
+              <a href="https://apps.apple.com/in/app/id1616152944" target="_blank" class="p-2 rounded-md hover:bg-slate-700/30" title="App Store">
+                <img src="appstore.png" alt="App Store" class="h-6">
+              </a>
+            </div>
+          </div>
+        </article>
 
+        <!-- third sample -->
+        <article class="rounded-xl overflow-hidden border border-slate-700 bg-slate-800/30">
+          <div class="aspect-video bg-center bg-cover" style="background-image:url('cg.png');"></div>
+          <div class="p-4">
+            <h3 class="font-semibold">Cricket Gangsta</h3>
+            <p class="text-slate-400 text-sm mt-1">A street-style multiplayer cricket game with dynamic visuals and real-time PvP gameplay. I worked on Firebase API integration, costume customization, player card selection, and reward system setup. Additionally, I implemented in-app purchases, AdMob ads, and a guided tutorial flow for smooth onboarding.</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="text-xs px-2 py-1 rounded bg-slate-700/40">Unity</span>
+              <span class="text-xs px-2 py-1 rounded bg-slate-700/40">C#</span>
+            </div>
+            <!-- Store links -->
+            <div class="mt-3 flex gap-2">
+              <a href="https://play.google.com/store/apps/details?id=com.creativemonkeygames.wcbt20cricketpremierleague" target="_blank" class="p-2 rounded-md hover:bg-slate-700/30" title="Play Store">
+                <img src="playstore.png" alt="Play Store" class="h-6">
+              </a>
+              <a href="https://apps.apple.com/sa/app/id6443536314" target="_blank" class="p-2 rounded-md hover:bg-slate-700/30" title="App Store">
+                <img src="appstore.png" alt="App Store" class="h-6">
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="mt-12 max-w-3xl">
+      <div class="rounded-2xl p-6 border border-slate-700 glass">
+        <h2 class="text-2xl font-semibold">Let's build something</h2>
+        <p class="text-slate-400 mt-2">Open for freelance & full-time — Unity, WebGL, AR projects.</p>
+
+        <form class="mt-6 grid gap-4" onsubmit="contactSubmit(event)">
+          <input type="text" id="name" placeholder="Your name" required class="w-full px-3 py-2 rounded-md bg-slate-900/50 border border-slate-700" />
+          <input type="email" id="email" placeholder="Your email" required class="w-full px-3 py-2 rounded-md bg-slate-900/50 border border-slate-700" />
+          <textarea id="message" rows="5" placeholder="Message" required class="w-full px-3 py-2 rounded-md bg-slate-900/50 border border-slate-700"></textarea>
+          <div class="flex items-center justify-between">
+            <button type="submit" class="px-4 py-2 rounded-md bg-violet-600">Send</button>
+            <div class="text-sm text-slate-400">or email me at <a href="mailto:jaheerjak@gmail.com" class="underline">jaheerjak@gmail.com</a></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="mt-12 border-t border-slate-700 pt-6 pb-12 text-center text-slate-400">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-center justify-center gap-4">
+          <!-- <a href="https://github.com/yourname" target="_blank" class="hover:text-white">GitHub</a>-->
+          <a href="https://www.linkedin.com/in/jaheer-hussein-4aa33710b/" target="_blank" class="hover:text-white">LinkedIn</a>
+        </div>
+        <p class="mt-4 text-xs">© <span id="year"></span> Jaheer Hussein — Built with Unity, WebGL & ❤️</p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Scripts -->
   <script>
     // Mobile menu toggle
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     menuBtn?.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
+      // toggle icon (hamburger <-> x)
       const icon = document.getElementById('menuIcon');
       if (!mobileMenu.classList.contains('hidden')) {
-        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>';
+        icon.innerHTML = '<path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M6 18L18 6M6 6l12 12\"/>';
       } else {
-        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>';
+        icon.innerHTML = '<path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 8h16M4 16h16\"/>';
       }
     });
 
-    // Mailto form submit
+    // Contact form: opens mailto with prefilled content
     function contactSubmit(e) {
       e.preventDefault();
       const name = encodeURIComponent(document.getElementById('name').value);
       const email = encodeURIComponent(document.getElementById('email').value);
       const message = encodeURIComponent(document.getElementById('message').value);
       const subject = encodeURIComponent('Portfolio Inquiry from ' + name);
-      const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
+      const body = encodeURIComponent('Name: ' + name + '\\nEmail: ' + email + '\\n\\n' + message);
       window.location.href = `mailto:jaheerjak@gmail.com?subject=${subject}&body=${body}`;
     }
 
-    // Footer year
+    // current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
